@@ -1,8 +1,8 @@
-name: Build VulkanMod for Mali-G77
+name: Build VulkanMod 1.21.10 for Dimensity 1200 (Mali-G77)
 
 on:
   push:
-    branches: [ dev, main, "Mali-G77*" ]
+    branches: [ dimensity-1200-1.21.10, dev, main ]
   workflow_dispatch:
 
 jobs:
@@ -18,13 +18,15 @@ jobs:
           java-version: '21'
       - name: Grant execute permission
         run: chmod +x gradlew
-      - name: Build with Gradle Wrapper
+      - name: Build with Gradle
         run: ./gradlew build -x test --stacktrace --no-daemon
-      - name: Upload Artifacts
+      - name: Rename and Prepare Artifact
+        run: |
+          mkdir -p output
+          find build/libs -name "*.jar" ! -name "*-sources.jar" ! -name "*-dev.jar" -exec cp {} output/VulkanMod-1.21.10-Dimensity1200-MaliG77.jar \;
+      - name: Upload Mod Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: VulkanMod-1.21.10-Mali-G77
-          path: |
-            **/build/libs/*.jar
-            !**/build/libs/*-sources.jar
-          if-no-files-found: warn
+          name: VulkanMod-1.21.10-Dimensity1200-MaliG77
+          path: output/*.jar
+          if-no-files-found: error

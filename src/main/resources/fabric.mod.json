@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "id": "vulkanmod",
-  "version": "${version}",
-  "name": "VulkanMod",
+  "version": "0.6.8+1.21.10",
+  "name": "VulkanMod (Dimensity 1200 / Mali-G77 Edition)",
   "description": "Bring Vulkan to Minecraft!",
   "authors": [
     "Collateral"
@@ -23,8 +23,9 @@
   ],
   "accessWidener": "vulkanmod.accesswidener",
   "depends": {
-    "fabricloader": ">=0.14.14",
-    "minecraft": ">=1.21"
+    "fabricloader": ">=0.15.0",
+    "minecraft": "*",
+    "java": ">=21"
   },
   "custom": {
     "fabric-renderer-api-v1:contains_renderer": true
