@@ -181,7 +181,7 @@ public class Renderer {
     }
 
     private void createSyncObjects() {
-        int swapChainImages = swapChain.getImagesNum();
+        int swapChainImages = renderFinishedSemaphores.size();
         renderFinishedSemaphores = new ArrayList<>(swapChainImages);
 
         imageAvailableSemaphores = new ArrayList<>(framesNum);
