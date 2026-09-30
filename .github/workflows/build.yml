@@ -1,4 +1,4 @@
-name: Build VulkanMod for Mali-G77 (1.21.x)
+name: Build VulkanMod for Mali-G77 (1.21.10)
 
 on:
   push:

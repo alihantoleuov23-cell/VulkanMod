@@ -4,6 +4,7 @@
 precision highp float;
 precision mediump sampler2D;
 
+// Включает аппаратный Forward Pixel Kill на Mali-G77
 layout(early_fragment_tests) in;
 
 layout(binding = 1) uniform sampler2D diffuseTex;
