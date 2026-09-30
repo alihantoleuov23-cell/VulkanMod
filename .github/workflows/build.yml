@@ -1,4 +1,4 @@
-name: Build VulkanMod for Mali-G77 (1.21.10)
+name: Build VulkanMod for Mali-G77
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         with:
           arguments: build -x test --stacktrace --no-daemon
-      - name: Upload Build Artifacts
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: VulkanMod-1.21.10-Mali-G77
