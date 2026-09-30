@@ -630,13 +630,23 @@ public class Renderer {
     }
 
     private void destroySyncObjects() {
-        for (int i = 0; i < framesNum; ++i) {
-            vkDestroyFence(device, inFlightFences.get(i), null);
-            vkDestroySemaphore(device, imageAvailableSemaphores.get(i), null);
+        if (inFlightFences != null) {
+            for (Long fence : inFlightFences) {
+                if (fence != null && fence != 0L) vkDestroyFence(device, fence, null);
+            }
+            inFlightFences.clear();
         }
-
-        for (int i = 0; i < swapChain.getImagesNum(); ++i) {
-            vkDestroySemaphore(device, renderFinishedSemaphores.get(i), null);
+        if (imageAvailableSemaphores != null) {
+            for (Long sem : imageAvailableSemaphores) {
+                if (sem != null && sem != 0L) vkDestroySemaphore(device, sem, null);
+            }
+            imageAvailableSemaphores.clear();
+        }
+        if (renderFinishedSemaphores != null) {
+            for (Long sem : renderFinishedSemaphores) {
+                if (sem != null && sem != 0L) vkDestroySemaphore(device, sem, null);
+            }
+            renderFinishedSemaphores.clear();
         }
     }
 
